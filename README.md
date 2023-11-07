@@ -14,4 +14,4 @@ larger version in modal window. Pagination is supported.
 
 ## Setup
 
-This app runs on https://jakublawnicki.github.io/goit-react-hw-03-image-finder/
+This app runs on https://jakublawnicki.github.io/goit-react-hw-04-image-finder/
