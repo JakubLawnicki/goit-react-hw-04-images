@@ -5,38 +5,45 @@ import { Button } from 'components/button/Button';
 import { Modal } from 'components/modal/Modal';
 
 export function ImageGallery({
-  list,
-  load,
-  more,
-  page,
-  total,
+  imageList,
+  setCurrentPage,
+  getMoreImages,
+  currentPage,
+  totalHits,
   modal,
-  openModal,
-  closeModal,
+  setModal,
   selectedImage,
+  setSelectedImage,
 }) {
   const renderLoadMoreButton = () => {
-    if (total > 12) {
-      return <Button load={load} more={more} page={page} />;
+    if (totalHits > 12) {
+      return (
+        <Button
+          setCurrentPage={setCurrentPage}
+          getMoreImages={getMoreImages}
+          currentPage={currentPage}
+        />
+      );
     }
   };
 
   return (
     <>
       <ul className={styles.gallery}>
-        {list.map(image => {
-          console.log(image);
+        {imageList.map(image => {
           return (
             <div key={image.id}>
               <ImageGalleryItem
                 id={image.id}
                 url={image.imgUrl}
-                openModal={() => openModal(image)}
+                setModal={setModal}
+                image={image}
+                setSelectedImage={setSelectedImage}
               />
               <Modal
                 largeUrl={selectedImage.largeImgUrl}
                 modal={modal}
-                closeModal={closeModal}
+                setModal={setModal}
               />
             </div>
           );
@@ -48,13 +55,13 @@ export function ImageGallery({
 }
 
 ImageGallery.propTypes = {
-  list: PropTypes.array,
-  load: PropTypes.func,
-  more: PropTypes.func,
-  page: PropTypes.number,
-  total: PropTypes.number,
+  imageList: PropTypes.array,
+  setCurrentPage: PropTypes.func,
+  getMoreImages: PropTypes.func,
+  currentPage: PropTypes.number,
+  totalHits: PropTypes.number,
   modal: PropTypes.bool,
-  openModal: PropTypes.func,
-  closeModal: PropTypes.func,
+  setModal: PropTypes.func,
+  setSelectedImage: PropTypes.func,
   selectedImage: PropTypes.object,
 };

@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
 import styles from './imageGalleryItem.module.css';
 
-export function ImageGalleryItem({ id, url, openModal }) {
+export function ImageGalleryItem({
+  id,
+  url,
+  setModal,
+  image,
+  setSelectedImage,
+}) {
   return (
     <li
       id={id}
       className={styles['gallery-item']}
       onClick={() => {
-        openModal();
+        setModal(true);
+        setSelectedImage(image);
       }}
     >
       <img src={url} alt="" />
@@ -18,5 +25,7 @@ export function ImageGalleryItem({ id, url, openModal }) {
 ImageGalleryItem.propTypes = {
   id: PropTypes.number,
   url: PropTypes.string,
-  openModal: PropTypes.func,
+  setModal: PropTypes.func,
+  image: PropTypes.object,
+  setSelectedImage: PropTypes.func,
 };

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import styles from './button.module.css';
 
-export function Button({ load, more, page }) {
+export function Button({ setCurrentPage, getMoreImages, currentPage }) {
   return (
     <button
       onClick={() => {
-        load();
+        setCurrentPage(currentPage + 1);
 
-        more(page);
+        getMoreImages(currentPage);
       }}
       type="button"
       className={styles['load-button']}
@@ -18,7 +18,7 @@ export function Button({ load, more, page }) {
 }
 
 Button.propTypes = {
-  load: PropTypes.func,
-  more: PropTypes.func,
-  page: PropTypes.number,
+  setCurrentPage: PropTypes.func,
+  getMoreImages: PropTypes.func,
+  currentPage: PropTypes.number,
 };

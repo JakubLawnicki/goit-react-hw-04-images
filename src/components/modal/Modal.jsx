@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import styles from './modal.module.css';
 
-export function Modal({ largeUrl, modal, closeModal }) {
+export function Modal({ largeUrl, modal, setModal }) {
   if (modal) {
     return (
       <div
         className={styles.overlay}
         onClick={e => {
           e.stopPropagation();
-          closeModal();
+          setModal(false);
         }}
       >
         <div className={styles.modal}>
@@ -23,5 +23,5 @@ export function Modal({ largeUrl, modal, closeModal }) {
 Modal.propTypes = {
   largeUrl: PropTypes.string,
   modal: PropTypes.bool,
-  closeModal: PropTypes.func,
+  setModal: PropTypes.func,
 };
